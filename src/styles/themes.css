@@ -1,0 +1,199 @@
+@import 'variables';
+
+:root.theme-light {
+
+  /* fonts */
+  
+  --font-variation: 'Inter-Variable';
+  --font-accent: 'PressStart2P';
+  
+  /* weights */
+  
+  --font-variation-settings: 400;
+  --font-variation-settings-bold: 700;
+  
+  /* main colors */
+  
+  --bg-color: #fff;
+  --accent-color: rgb(0 0 0);
+  --accent-color-transparent: rgb(0 0 0 / 60%);
+  --button-text-color: #fff;
+
+  /* heart SVG */
+
+  --sparks-fill-color: #F00;
+  --sparks-fill-color-transparent: rgb(255 0 0 / 0%);
+  --contour-color: rgb(0 0 0);
+  --core-color: rgb(0 0 0);
+  --core-color-transparent: rgb(0 0 0 / 0%);
+  --main-body-color: rgb(0 0 0);
+  --main-body-color-transparent: rgb(0 0 0 / 0%);
+  --contour-active-color: #F00;
+  --core-active-color: #F00;
+  --main-body-active-color: #F00;
+
+  /* gradients colors */
+
+  --gradient-line-1: rgb(211 211 211);
+  --gradient-line-2: rgb(211 211 211 / 0%);
+  --gradient-smeared-1: #e7e7e7;
+  --gradient-smeared-2: #1a1a1a;
+  
+  /* gradients light */
+
+  --gradient-left-to-right: repeating-linear-gradient(
+    to right, 
+    var(--gradient-line-2) 0,
+    var(--gradient-line-1) 1px,
+    var(--gradient-line-1) 2px,
+    var(--gradient-line-2) 3px,
+    var(--gradient-line-2) 4px
+  );
+
+  --gradient-top-to-bottom: repeating-linear-gradient(
+    to bottom, 
+    var(--gradient-line-2) 0,
+    var(--gradient-line-1) 1px,
+    var(--gradient-line-1) 2px,
+    var(--gradient-line-2) 3px,
+    var(--gradient-line-2) 4px
+  );
+
+  --gradient-bg: linear-gradient(
+    to bottom, 
+    var(--gradient-smeared-1) 0.01%,
+    var(--gradient-smeared-2)
+  );
+
+  /* transforms */
+
+  --transform-time: 0.3s;
+  --transition-function: ease;
+
+  /* border */
+
+  --border-width: 2px;
+  }
+
+:root.theme-dark {
+
+    /* weights */
+    
+  --font-variation-settings: 465;
+  --font-variation-settings-bold: 785;
+    
+    /* main colors */
+    
+  --bg-color: #000;
+  --accent-color: rgb(0 204 20);
+  --accent-color-transparent: rgb(0 204 20 / 60%);
+  --button-text-color: rgb(0 204 20);
+
+    /* heart SVG */
+
+  --contour-color: rgb(0 204 20);
+  --core-color: rgb(0 204 20);
+  --core-color-transparent: rgb(0 204 20 / 0%);
+  --main-body-color: rgb(0 204 20);
+  --main-body-color-transparent: rgb(0 204 20 / 0%);
+  --contour-active-color: #F00;
+  --core-active-color: #F00;
+  --main-body-active-color: #F00;
+
+    /* gradients colors */
+
+  --gradient-line-1: rgb(0 0 0);
+  --gradient-line-2: rgb(0 0 0 / 0%);
+  --gradient-smeared-1: #007f0c;
+  --gradient-smeared-2: #004306;
+
+    /* gradients dark */
+
+  --gradient-left-to-right: repeating-linear-gradient(
+    to right, 
+    var(--gradient-line-2) 0,
+    var(--gradient-line-1) 1px,
+    var(--gradient-line-1) 2px,
+    var(--gradient-line-2) 3px,
+    var(--gradient-line-2) 4px
+  );
+
+  --gradient-top-to-bottom: repeating-linear-gradient(
+    to bottom, 
+    var(--gradient-line-2) 0,
+    var(--gradient-line-1) 1px,
+    var(--gradient-line-1) 2px,
+    var(--gradient-line-2) 3px,
+    var(--gradient-line-2) 4px
+  );
+
+  --gradient-bg: linear-gradient(
+    to bottom, 
+    var(--gradient-smeared-1),
+    var(--gradient-smeared-2)
+  );
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+
+        /* weights */
+    
+      --font-variation-settings: 465;
+      --font-variation-settings-bold: 785;
+
+      /* main colors */
+
+      --bg-color: #000;
+      --accent-color: rgb(0 204 20);
+      --accent-color-transparent: rgb(0 204 20 / 60%);
+      --button-text-color: rgb(0 204 20);
+
+        /* heart SVG */
+
+      --contour-color: rgb(0 204 20);
+      --core-color: rgb(0 204 20);
+      --core-color-transparent: rgb(0 204 20 / 0%);
+      --main-body-color: rgb(0 204 20);
+      --main-body-color-transparent: rgb(0 204 20 / 0%);
+      --contour-active-color: #F00;
+      --core-active-color: #F00;
+      --main-body-active-color: #F00;
+
+        /* gradients colors */
+
+      --gradient-line-1: rgb(0 0 0);
+      --gradient-line-2: rgb(0 0 0 / 0%);
+      --gradient-smeared-1: #007f0c;
+      --gradient-smeared-2: #004306;
+
+      /* gradients dark */
+
+      --gradient-left-to-right: repeating-linear-gradient(
+        to right, 
+        var(--gradient-line-2) 0,
+        var(--gradient-line-1) 1px,
+        var(--gradient-line-1) 2px,
+        var(--gradient-line-2) 3px,
+        var(--gradient-line-2) 4px
+      );
+
+      --gradient-top-to-bottom: repeating-linear-gradient(
+        to bottom, 
+        var(--gradient-line-2) 0,
+        var(--gradient-line-1) 1px,
+        var(--gradient-line-1) 2px,
+        var(--gradient-line-2) 3px,
+        var(--gradient-line-2) 4px
+      );
+
+      --gradient-bg: linear-gradient(
+        to bottom, 
+        var(--gradient-smeared-1),
+        var(--gradient-smeared-2)
+      );
+    } 
+  }
+    
+    
+    

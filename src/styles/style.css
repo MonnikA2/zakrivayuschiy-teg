@@ -1,0 +1,498 @@
+@import 'globals';
+@import 'variables';
+@import 'fonts';
+@import 'themes';
+@import 'animations';
+
+/* Класс для визуального скрытия */
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.page {
+  padding: 100px 0;
+  color: var(--accent-color);
+  font-family: var(--font-variation), sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--gradient-left-to-right), var(--gradient-top-to-bottom), var(--gradient-bg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-inline-size: 320px;
+  min-block-size: 100dvd;
+  font-variation-settings: 
+    'wght' var(--font-variation-settings),
+    'wdth' 100,
+    'opsz' 0;
+}
+
+.content-section {
+  margin: 0 auto;
+  max-inline-size: 700px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 100px;
+  border: 2px solid var(--accent-color);
+  font-family: var(--font-accent), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: var(--bg-color);
+  transition: var(--transform-time);
+  transition-timing-function: var(--transition-function);
+}
+
+.header__title {
+  margin: clamp(7.5rem, 6.33318rem + 4.9844vw, 8.5rem) 0 25px;
+  font-weight: inherit;
+  font-size: clamp(0.875rem, 0.2179rem + 2.8037vw, 1.4375rem);
+  text-align: center;
+}
+
+.header__title-accent {
+  display: block;
+  margin: 0 0 20px;
+  font-weight: inherit;
+  font-size: clamp(3.0625rem, 1.8943rem + 4.9844vw, 4.0625rem);
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 25px 18px;
+  text-align: left;
+}
+
+.theme-menu__button {
+  position: relative;
+  border: none;
+  padding: 0;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: color var(--transform-time);
+  transition-timing-function: var(--transition-function);
+  cursor: pointer;
+}
+
+.theme-menu__button:hover {
+  color: var(--accent-color-transparent);
+}
+
+.theme-menu__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  background-color: var(--accent-color-transparent);
+  transition: transform var(--transform-time), color var(--transform-time);
+  transition-timing-function: var(--transition-function);
+  transform: scaleX(0);
+  transform-origin: left;
+  block-size: 3px;
+  inline-size: 100%;
+  inset-block-end: -3px;
+  inset-inline-start: 0;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+}
+
+.theme-menu__button:focus-visible {
+  color: var(--accent-color-transparent);
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.theme-menu__button:disabled {
+  position: relative;
+  color: var(--accent-color-transparent);
+  transition: color var(--transform-time);
+  transition-timing-function: var(--transition-function);
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before {
+  content: '▶';
+  position: absolute;
+  animation: moving 0.5s infinite ease-in-out reverse;
+  inset-inline-start: -20px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  border: var(--border-width) solid var(--accent-color);
+  background-color: var(--bg-color);
+}
+
+.card__header {
+  border-bottom: var(--border-width) solid var(--accent-color);
+  padding: 3px 24px 3px 10px;
+  font-size: 18px;
+  font-variation-settings: 
+  'wght' var(--font-variation-settings-bold),
+  'wdth' 100,
+  'opsz' 0;
+}
+
+.card__image-container {
+  position: relative;
+  border-bottom: var(--border-width) solid var(--accent-color);
+}
+
+ /* Стилизация лейблов */
+
+.card__image-text {
+  position: absolute;
+  z-index: 2;
+  opacity: 0.5;
+  color: var(--accent-color);
+  font-family: var(--font-accent), sans-serif;
+  font-size: 14px;
+  text-shadow: 
+    1px 0 0 var(--bg-color),
+    1px 0 0 var(--bg-color),
+    0 1px 0 var(--bg-color),
+    0 1px 0 var(--bg-color),
+    -1px 0 0 var(--bg-color),
+    -1px 0 0 var(--bg-color),
+    0 -1px 0 var(--bg-color),
+    0 -1px 0 var(--bg-color);
+  mix-blend-mode: hard-light;
+  inset-inline-end: 25px;
+  inset-block-start: 25px;
+}
+
+/* Проверка поддержки стилизации лейблов */
+
+@supports ((text-stroke: 1px var(--bg-color)) or 
+  (-webkit-text-stroke: 1px var(--bg-color))) {
+  .card__image-text {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--bg-color);
+  }
+}
+
+.card__image {
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  inline-size: 100%;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+} 
+
+.card__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__text {
+  font-size: 18px;
+  line-height: 21px;
+  font-variation-settings: 
+  'wght' var(--font-variation-settings),
+  'wdth' 100,
+  'opsz' 0;
+}
+  
+.card__buttons {
+  display: flex;
+  gap: 7px;
+  align-self: flex-end;
+  margin: 25px 0 0;
+}
+
+.card__icon-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 4px 0 3px;
+  outline: var(--border-width) solid transparent;
+  outline-offset: var(--border-width);
+  background-color: transparent;
+  transition: outline var(--transform-time);
+  transition-timing-function: var(--transition-function);
+  cursor: pointer;
+  inline-size: 39px;
+  
+  .like-icon {
+    position: absolute; 
+    
+    .core {
+      fill: var(--core-color-transparent);
+      transition: fill 0.3s 0.03s linear;
+    }
+    
+    .main-body {
+      fill: var(--main-body-color-transparent);
+      transition: fill 0.3s linear;
+    }
+    
+    .sparks {
+      opacity: 0%;
+    }
+  }
+  
+  .like-icon.is-liked {
+    animation: icon-scaling 0.1s 0.3s ease-in reverse;
+    
+    .core {
+      animation: core-coloring 0.3s linear;
+      animation-fill-mode: forwards;
+    }
+    
+    .main-body {
+      animation: main-body-coloring 0.3s linear;
+      animation-fill-mode: forwards;
+    }
+    
+    .contour {
+      animation: contour-coloring 0.3s 0.06s linear;
+      animation-fill-mode: forwards;
+    }
+    
+    .sparks {
+      animation: sparks-coloring 0.3s 0.3s ease-in reverse;
+    }
+  }
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: var(--border-width) solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+.card__icon-button:hover {
+  .like-icon {
+    .core {
+      fill: var(--core-color);
+      transition: fill 0.3s linear;
+    }
+
+    .main-body {
+      fill: var(--main-body-color);
+      transition: fill 0.3s 0.05s linear;
+    }
+  }
+}
+
+.card__icon-button:active {
+  .like-icon {
+    .core {
+      fill: var(--core-active-color);
+      transition: fill 0.3s linear;
+    }
+
+    .main-body {
+      fill: var(--main-body-active-color);
+      transition: fill 0.3s 0.05s linear;
+    }
+  }
+}
+
+.card__like-button {
+  padding: 9px 17px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  background-color: transparent;
+  cursor: pointer;
+  inline-size: 130px;
+}
+
+.standart-button {
+  position: relative;
+  border: var(--border-width) solid var(--accent-color);
+  transition: box-shadow var(--transform-time);
+  transition-timing-function: var(--transition-function);
+}
+
+.standart-button:focus {
+  outline: none;
+}
+
+.standart-button:focus-visible {
+  box-shadow: 2px 2px 0 2px var(--accent-color);
+}
+
+.standart-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: var(--accent-color);
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.standart-button:hover::before {
+  transform: scaleX(1);
+}
+
+.button__text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  color: var(--button-text-color);
+  font-family: var(--font-accent), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  mix-blend-mode: difference;
+}
+
+.footer {
+  margin: 50px auto 0;
+  background-color: var(--bg-color);
+  max-inline-size: 314px;
+}
+
+.footer__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  background-color: transparent;
+  transition: box-shadow var(--transform-time);
+  transition-timing-function: var(--transition-function);
+  cursor: pointer;
+}
+
+.footer__button:focus {
+  outline: none;
+}
+
+.footer__button-image {
+  position: relative;
+  z-index: 2;
+  color: var(--button-text-color);
+  block-size: 28px;
+  inline-size: auto;
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  border: var(--border-width) solid var(--accent-color);
+  padding: 30px 40px;
+  color: var(--accent-color);
+  font-family: var(--font-accent), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+  background-color: var(--bg-color);
+  transition: opacity 0.3s ease-in-out;
+  max-inline-size: 341px;
+}
+
+.dialog__form {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-rows: 1fr fit-content;
+  row-gap: 30px;
+}
+
+.dialog:not([open]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dialog__button {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  padding: 9px 0;
+  text-transform: uppercase;
+  background-color: var(--bg-color);
+}
+
+.dialog__image {
+  align-items: center;
+  inline-size: 39px;
+  block-size: 39px;
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 75%);
+}
+
+@media (width > 380px) {
+  .footer {
+    inline-size: 340px;
+  }
+
+  .footer__button {
+    flex-direction: row;
+  }
+
+  .footer__button-image {
+    margin: 0 8px 0 19px;
+    block-size: 21px;
+  }
+}
+
+.filter__bright {
+  filter: brightness(150%);
+}
+
+.filter__gray {
+  filter: grayscale(1);
+}
+
+.filter__sepia {
+  filter: sepia(80%);
+}
+
+.filter__invert {
+  filter: invert(0.2);
+}
+
+.filter__blur {
+  filter: blur(5px);
+}
+
+.filter__multiple {
+  filter: saturate(400%) contrast(180%) brightness(180%); 
+}
+
+.filter__gray-bright {
+  filter: brightness(60%) grayscale(0.5);
+}
+
+.filter__saturate {
+  filter: saturate(200%);
+}
